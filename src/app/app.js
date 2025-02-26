@@ -6,6 +6,8 @@ import {GameMediator} from "./mediator";
 import {SoundsManager} from "../utils/soundsManager";
 import {BgMediator} from "../modules/bg/bgMediator";
 import {BgView} from "../modules/bg/bgView";
+import {FieldMediator} from "../modules/field/fieldMediator";
+import {FieldView} from "../modules/field/fieldView";
 
 export class App extends Application {
 
@@ -21,6 +23,7 @@ export class App extends Application {
         await this.initSounds();
         await this.loadAssets();
         this.registerBg();
+        this.registerField();
 
         this.gameMediator = new GameMediator();
         this.gameMediator.resourcesLoaded();
@@ -47,6 +50,13 @@ export class App extends Application {
         const parent = new Container();
         this.stage.addChild(parent);
         mediator.initView(BgView, parent);
+    }
+
+    registerField() {
+        const mediator = new FieldMediator();
+        const parent = new Container();
+        this.stage.addChild(parent);
+        mediator.initView(FieldView, parent);
     }
 
 

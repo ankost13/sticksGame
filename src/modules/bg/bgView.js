@@ -12,7 +12,7 @@ export class BgView extends View {
         this.bg = new Sprite({
             texture: Assets.get("bg"),
             anchor: 0.5,
-            scale: .5,
+            scale: .8,
         })
         this.addChild(this.bg);
     }
