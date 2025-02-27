@@ -8,6 +8,8 @@ import {BgMediator} from "../modules/bg/bgMediator";
 import {BgView} from "../modules/bg/bgView";
 import {FieldMediator} from "../modules/field/fieldMediator";
 import {FieldView} from "../modules/field/fieldView";
+import {ButtonView} from "../modules/buttons/buttonView";
+import {ButtonMediator} from "../modules/buttons/buttonsMediator";
 
 export class App extends Application {
 
@@ -24,6 +26,7 @@ export class App extends Application {
         await this.loadAssets();
         this.registerBg();
         this.registerField();
+        this.registerButtons();
 
         this.gameMediator = new GameMediator();
         this.gameMediator.resourcesLoaded();
@@ -57,6 +60,13 @@ export class App extends Application {
         const parent = new Container();
         this.stage.addChild(parent);
         mediator.initView(FieldView, parent);
+    }
+
+    registerButtons() {
+        const mediator = new ButtonMediator();
+        const parent = new Container();
+        this.stage.addChild(parent);
+        mediator.initView(ButtonView, parent);
     }
 
 
