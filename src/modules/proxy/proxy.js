@@ -1,3 +1,5 @@
+import {randomInteger} from "../../utils/helperFunction";
+
 let instance = null;
 
 export class Proxy { //для даних
@@ -14,5 +16,9 @@ export class Proxy { //для даних
         return instance;
     }
 
+    getNumberMatches() {
+        this.numberMatches = randomInteger(10, 20);
+        return this.numberMatches;
+    }
 }
 

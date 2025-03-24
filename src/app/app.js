@@ -6,10 +6,11 @@ import {GameMediator} from "./mediator";
 import {SoundsManager} from "../utils/soundsManager";
 import {BgMediator} from "../modules/bg/bgMediator";
 import {BgView} from "../modules/bg/bgView";
-import {FieldMediator} from "../modules/field/fieldMediator";
-import {FieldView} from "../modules/field/fieldView";
+import {MatchMediator} from "../modules/match/matchMediator";
+import {MatchView} from "../modules/match/matchView";
 import {ButtonView} from "../modules/buttons/buttonView";
 import {ButtonMediator} from "../modules/buttons/buttonsMediator";
+import {GameLogicMediator} from "../modules/gameLogic/gameLogicMediator";
 
 export class App extends Application {
 
@@ -25,8 +26,9 @@ export class App extends Application {
         await this.initSounds();
         await this.loadAssets();
         this.registerBg();
-        this.registerField();
+        this.registerMatch();
         this.registerButtons();
+        this.registerGameLogic();
 
         this.gameMediator = new GameMediator();
         this.gameMediator.resourcesLoaded();
@@ -55,11 +57,11 @@ export class App extends Application {
         mediator.initView(BgView, parent);
     }
 
-    registerField() {
-        const mediator = new FieldMediator();
+    registerMatch() {
+        const mediator = new MatchMediator();
         const parent = new Container();
         this.stage.addChild(parent);
-        mediator.initView(FieldView, parent);
+        mediator.initView(MatchView, parent);
     }
 
     registerButtons() {
@@ -69,6 +71,9 @@ export class App extends Application {
         mediator.initView(ButtonView, parent);
     }
 
+    registerGameLogic() {
+        new GameLogicMediator();
+    }
 
     async initSounds() {
         const sounds = [
