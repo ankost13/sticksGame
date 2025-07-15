@@ -3,6 +3,7 @@ import {MatchNotification} from "./matchNotification";
 import {setAnimationTimeoutSync} from "../../utils/helperFunction";
 import {MatchView} from "./matchView";
 import {ButtonsNotification} from "../buttons/buttonsNotification";
+import {WinNotification} from "../win/winNotification";
 
 export class MatchMediator extends BaseMediator {
     constructor() {
@@ -17,8 +18,9 @@ export class MatchMediator extends BaseMediator {
         })
         this.subscribeToNotification(MatchNotification.DELETE_MATCH, async (numberDeleteMatches) => {
             this.view.deleteMatches(numberDeleteMatches);
-            if (this.currentNumberMatches === 1) {
-                console.error("YOU are the winner")
+            if (this.currentNumberMatches === 0) {
+                this.sendNotification(WinNotification.SHOW_WIN, "comp")
+                // console.error("COMPUTER are the winner")
             }
             await setAnimationTimeoutSync(2);
             if (this.currentNumberMatches > 0){
@@ -29,8 +31,9 @@ export class MatchMediator extends BaseMediator {
             await this.sendNotification(MatchNotification.CHECK_NUMBER_MATCHES, {numberDeleteMatches: numberDeleteMatches, currentNumberMatches: this.currentNumberMatches});
             this.view.deleteMatches(this.numberDeleteMatches);
             console.error("comp", this.numberDeleteMatches)
-            if (this.currentNumberMatches === 1) {
-                console.error("COMPUTER are the winner")
+            if (this.currentNumberMatches === 0) {
+                this.sendNotification(WinNotification.SHOW_WIN, "you")
+                // console.error("YOU are the winner")
             }
             await setAnimationTimeoutSync(0.5);
             this.sendNotification(ButtonsNotification.CHANGE_INTERACTIVE_ON_TRUE, this.currentNumberMatches);

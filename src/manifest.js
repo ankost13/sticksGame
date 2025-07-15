@@ -6,6 +6,8 @@ export const manifest = {
                 bg: "assets/img/bg.jpg",
                 match: "assets/img/match.png",
                 buttons: "assets/img/buttons.json",
+                popup: "assets/img/popup.jpg",
+                next: "assets/img/next.png",
             },
         },
     ]

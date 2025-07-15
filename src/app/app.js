@@ -11,6 +11,8 @@ import {MatchView} from "../modules/match/matchView";
 import {ButtonView} from "../modules/buttons/buttonView";
 import {ButtonMediator} from "../modules/buttons/buttonsMediator";
 import {GameLogicMediator} from "../modules/gameLogic/gameLogicMediator";
+import {WinMediator} from "../modules/win/winMediator";
+import {WinView} from "../modules/win/winView";
 
 export class App extends Application {
 
@@ -29,6 +31,7 @@ export class App extends Application {
         this.registerMatch();
         this.registerButtons();
         this.registerGameLogic();
+        this.registerWin();
 
         this.gameMediator = new GameMediator();
         this.gameMediator.resourcesLoaded();
@@ -69,6 +72,13 @@ export class App extends Application {
         const parent = new Container();
         this.stage.addChild(parent);
         mediator.initView(ButtonView, parent);
+    }
+
+    registerWin() {
+        const mediator = new WinMediator();
+        const parent = new Container();
+        this.stage.addChild(parent);
+        mediator.initView(WinView, parent);
     }
 
     registerGameLogic() {

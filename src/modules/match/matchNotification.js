@@ -6,5 +6,4 @@ export class MatchNotification {
     static CHECK_NUMBER_MATCHES = "MatchNotification.CHECK_NUMBER_MATCHES";
     static SEND_NUMBER_MATCHES = "MatchNotification.SEND_NUMBER_MATCHES";
 
-
 }
