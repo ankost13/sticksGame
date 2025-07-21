@@ -1,7 +1,6 @@
 import {View} from "../../utils/view";
 import gsap from 'gsap';
 import {Assets, Container, Sprite,  BitmapText} from "pixi.js";
-import {setAnimationTimeoutSync} from "../../utils/helperFunction";
 import {WinNotification} from "./winNotification";
 
 export class WinView extends View {
