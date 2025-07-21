@@ -19,6 +19,7 @@ export class MatchMediator extends BaseMediator {
         this.subscribeToNotification(MatchNotification.DELETE_MATCH, async (numberDeleteMatches) => {
             this.view.deleteMatches(numberDeleteMatches);
             if (this.currentNumberMatches === 0) {
+                await setAnimationTimeoutSync(1)
                 this.sendNotification(WinNotification.SHOW_WIN, "comp")
                 // console.error("COMPUTER are the winner")
             }
@@ -32,6 +33,7 @@ export class MatchMediator extends BaseMediator {
             this.view.deleteMatches(this.numberDeleteMatches);
             console.error("comp", this.numberDeleteMatches)
             if (this.currentNumberMatches === 0) {
+                await setAnimationTimeoutSync(1)
                 this.sendNotification(WinNotification.SHOW_WIN, "you")
                 // console.error("YOU are the winner")
             }

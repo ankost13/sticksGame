@@ -1,5 +1,4 @@
 import {View} from "../../utils/view";
-import {randomInteger} from "../../utils/helperFunction";
 import {Assets, Container, Sprite} from "pixi.js";
 
 export class MatchView extends View {

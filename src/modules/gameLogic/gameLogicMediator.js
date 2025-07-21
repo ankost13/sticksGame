@@ -4,6 +4,7 @@ import {MatchNotification} from "../match/matchNotification";
 import {randomInteger} from "../../utils/helperFunction";
 
 export class GameLogicMediator extends BaseMediator {
+    static RESET_GAME = "GameLogicMediator.RESET_GAME"
 
     constructor() {
         super();
@@ -26,6 +27,9 @@ export class GameLogicMediator extends BaseMediator {
         this.subscribeToNotification(MatchNotification.CHECK_NUMBER_MATCHES, (data) => {
             this.sendNotification(MatchNotification.SEND_NUMBER_MATCHES, this.checkNumberMatches(data));
         })
+        this.subscribeToNotification(GameLogicMediator.RESET_GAME, () => {
+            this.resetGame()
+        })
     }
 
     computerStep() {
@@ -47,7 +51,9 @@ export class GameLogicMediator extends BaseMediator {
     }
 
     resetGame() {
-
+        console.error("RESET_GAME")
+        this.sendNotification(MatchNotification.CREATE_MATCHES, this.proxy.getNumberMatches())
+        this.sendNotification(ButtonsNotification.CHANGE_INTERACTIVE_ON_TRUE, 3)
     }
 
 }
