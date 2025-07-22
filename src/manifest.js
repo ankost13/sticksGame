@@ -7,7 +7,7 @@ export const manifest = {
                 match: "assets/img/match.png",
                 buttons: "assets/img/buttons.json",
                 popup: "assets/img/popup.jpg",
-                next: "assets/img/next.png",
+                transitionButton: "assets/img/transitionButton.json",
             },
         },
     ]

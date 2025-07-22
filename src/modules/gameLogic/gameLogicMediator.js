@@ -42,9 +42,7 @@ export class GameLogicMediator extends BaseMediator {
             data.numberDeleteMatches = 0;
         } else if (data.currentNumberMatches === 1) {
             data.numberDeleteMatches = 1;
-        } else if (data.currentNumberMatches === 2)  {
-            data.numberDeleteMatches = data.currentNumberMatches - 1;
-        } else if (data.currentNumberMatches === 3) {
+        } else if ((data.currentNumberMatches === 2) || (data.currentNumberMatches === 3) || (data.currentNumberMatches === 4) ) {
             data.numberDeleteMatches = data.currentNumberMatches - 1;
         }
         return data.numberDeleteMatches;

@@ -65,7 +65,6 @@ export class WinView extends View {
             ease: "power4.in",
             onComplete: () => {
                 this.popup.visible = false;
-                this.buttonNext.visible = false;
             }
         });
     }
@@ -103,8 +102,22 @@ export class WinView extends View {
     }
 
     setButtonsLogic() {
-        this.buttonNext.cursor = "pointer";
+        this.buttonNext.cursor = "pointer"
+
+        this.buttonNext.on("pointerover", () => {
+            this.buttonNext.texture = Assets.get("next_pointer")
+        });
+
+        this.buttonNext.on("pointerout", () => {
+            this.buttonNext.texture = Assets.get("next")
+        });
+
+        this.buttonNext.on("pointerdown", () => {
+            this.buttonNext.texture = Assets.get("next_on")
+        });
+
         this.buttonNext.on("pointerup", () => {
+            this.buttonNext.visible = false
             this.animationPopupOut()
             this.massageText.text = ""
             this.notifyToMediator(WinNotification.RESET_GAME)
