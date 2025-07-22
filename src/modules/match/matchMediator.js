@@ -17,21 +17,21 @@ export class MatchMediator extends BaseMediator {
             this.view.createMatches(data);
         })
         this.subscribeToNotification(MatchNotification.DELETE_MATCH, async (numberDeleteMatches) => {
-            this.view.deleteMatches(numberDeleteMatches);
+            await this.view.deleteMatches(numberDeleteMatches);
             if (this.currentNumberMatches === 0) {
                 await setAnimationTimeoutSync(1)
                 this.sendNotification(WinNotification.SHOW_WIN, "comp")
                 // console.error("COMPUTER are the winner")
             }
-            await setAnimationTimeoutSync(2);
+            await setAnimationTimeoutSync(1);
             if (this.currentNumberMatches > 0){
                 this.sendNotification(MatchNotification.NOW_COMPUTER_STEP);
             }
         })
         this.subscribeToNotification(MatchNotification.COMPUTER_STEP, async (numberDeleteMatches) => {
             await this.sendNotification(MatchNotification.CHECK_NUMBER_MATCHES, {numberDeleteMatches: numberDeleteMatches, currentNumberMatches: this.currentNumberMatches});
-            this.view.deleteMatches(this.numberDeleteMatches);
-            console.error("comp", this.numberDeleteMatches)
+            await this.view.deleteMatches(this.numberDeleteMatches);
+            // console.error("comp", this.numberDeleteMatches)
             if (this.currentNumberMatches === 0) {
                 await setAnimationTimeoutSync(1)
                 this.sendNotification(WinNotification.SHOW_WIN, "you")

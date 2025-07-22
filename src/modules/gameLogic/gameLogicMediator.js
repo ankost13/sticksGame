@@ -49,7 +49,7 @@ export class GameLogicMediator extends BaseMediator {
     }
 
     resetGame() {
-        console.error("RESET_GAME")
+        // console.error("RESET_GAME")
         this.sendNotification(MatchNotification.CREATE_MATCHES, this.proxy.getNumberMatches())
         this.sendNotification(ButtonsNotification.CHANGE_INTERACTIVE_ON_TRUE, 3)
     }
