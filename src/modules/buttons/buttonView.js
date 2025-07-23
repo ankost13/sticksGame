@@ -35,6 +35,16 @@ export class ButtonView extends View {
 
     setButtonsLogic() {
         this.collectionButtons.forEach((button, index) => {
+            const number = index + 1
+            button.on("pointerover", () => {
+                button.texture = Assets.get("button"+ number + "_pointer")
+            });
+            button.on("pointerout", () => {
+                button.texture = Assets.get("button"+ number)
+            });
+            button.on("pointerdown", () => {
+                button.texture = Assets.get("button"+ number + "_pointerdown")
+            });
             button.on("pointerup", () => {
                 this.notifyToMediator(ButtonView.BUTTON_CLICK, index + 1);
                 this.setInteractiveOnMatches(false, 1);

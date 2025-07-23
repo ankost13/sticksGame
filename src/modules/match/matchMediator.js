@@ -33,7 +33,7 @@ export class MatchMediator extends BaseMediator {
             await this.view.deleteMatches(this.numberDeleteMatches);
             // console.error("comp", this.numberDeleteMatches)
             if (this.currentNumberMatches === 0) {
-                await setAnimationTimeoutSync(1)
+                await setAnimationTimeoutSync(.7)
                 this.sendNotification(WinNotification.SHOW_WIN, "you")
                 // console.error("YOU are the winner")
             }
