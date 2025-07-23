@@ -6,6 +6,7 @@ export class BgView extends View {
         super(parent, resizeData);
         this.addBg();
         this.position.set(this.size.width / 2, this.size.height / 2);
+        this.playBgSound()
         //this.createRulesText();
     }
 
@@ -38,5 +39,8 @@ export class BgView extends View {
         this.massageText.position.set(0, 0);
     }
 
+    playBgSound() {
+        this.soundsManager.play("backgroundSound", 1);
+    }
 
 }

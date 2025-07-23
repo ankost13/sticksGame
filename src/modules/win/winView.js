@@ -38,7 +38,7 @@ export class WinView extends View {
         this.popup.alpha = 0
         this.popup.rotation = 0
         this.popup.visible = true
-
+        this.playInSound()
         gsap.to(this.popup, {
             duration: 1.2,
             x: this.size.width / 2,
@@ -55,7 +55,7 @@ export class WinView extends View {
     animationPopupOut() {
         const targetX = this.size.width
         const targetY = -500
-
+        this.playOutSound()
         gsap.to(this.popup, {
             duration: 1.2,
             x: targetX,
@@ -117,10 +117,23 @@ export class WinView extends View {
         });
 
         this.buttonNext.on("pointerup", () => {
+            this.playClickSound()
             this.buttonNext.visible = false
             this.animationPopupOut()
             this.massageText.text = ""
             this.notifyToMediator(WinNotification.RESET_GAME)
         });
+    }
+
+    playInSound() {
+        this.soundsManager.play("transitionIN", 1);
+    }
+
+    playOutSound() {
+        this.soundsManager.play("transitionOUT", 1);
+    }
+
+    playClickSound() {
+        this.soundsManager.play("click", .5);
     }
 }

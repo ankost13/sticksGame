@@ -44,6 +44,7 @@ export class ButtonView extends View {
             });
             button.on("pointerdown", () => {
                 button.texture = Assets.get("button"+ number + "_pointerdown")
+                this.playClickSound()
             });
             button.on("pointerup", () => {
                 this.notifyToMediator(ButtonView.BUTTON_CLICK, index + 1);
@@ -52,6 +53,10 @@ export class ButtonView extends View {
                 this.setInteractiveOnMatches(false, 3);
             });
         });
+    }
+
+    playClickSound() {
+        this.soundsManager.play("click", .3);
     }
 
     setInteractiveOnMatches(trueOrFalse, numberButton) {

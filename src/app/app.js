@@ -89,15 +89,30 @@ export class App extends Application {
         const sounds = [
             {
                 name: "backgroundSound",
-                src: "assets/sounds/backgroundSound.mp3",
-                volume: 0.01,
+                src: "assets/sounds/fire.mp3",
+                volume: 1,
                 loop: true,
             },
-            // {
-            //     name: "win",
-            //     src: "assets/sounds/win.mp3",
-            //     volume: 0.1,
-            // },
+            {
+                name: "step",
+                src: "assets/sounds/step.mp3",
+                volume: 1,
+            },
+            {
+                name: "transitionIN",
+                src: "assets/sounds/transitionIN.mp3",
+                volume: 1,
+            },
+            {
+                name: "transitionOUT",
+                src: "assets/sounds/transitionOUT.mp3",
+                volume: 1,
+            },
+            {
+                name: "click",
+                src: "assets/sounds/click.mp3",
+                volume: 1,
+            },
         ];
         const soundsManager = SoundsManager.getInstance()
         await soundsManager.loadSounds(sounds);

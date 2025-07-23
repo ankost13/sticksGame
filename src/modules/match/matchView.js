@@ -42,7 +42,7 @@ export class MatchView extends View {
 
     deleteAnimation(number) {
         const target = this.collectionMatches[number];
-
+        this.playStepSound()
         gsap.fromTo(
             target.scale,
             { x: target.scale.x, y: target.scale.y },
@@ -56,6 +56,10 @@ export class MatchView extends View {
                 }
             }
         );
+    }
+
+    playStepSound() {
+        this.soundsManager.play("step", .7);
     }
 
 }
